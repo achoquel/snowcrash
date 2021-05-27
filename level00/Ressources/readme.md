@@ -1,14 +1,13 @@
 # Level00 - Recherche de fichiers
 Pour résoudre le level00, on a un indice dans la vidéo de présentation du sujet. On nous demande de trouver les fichiers appartenant à flag00. Pour se faire, on peut éxecuter la commande `find ./ -user flag00` dans le root directory.
 
-:::info
-level00@SnowCrash:/$ find ./ -user flag00
+```level00@SnowCrash:/$ find ./ -user flag00
 ...
 ./usr/sbin/john
 ...
 /rofs/usr/sbin/john
 ...
-:::
+```
 
 On obtient deux résultats (qui sont en réalité les mêmes). On regarde le contenu de `/usr/sbin/john`.
 
