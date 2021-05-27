@@ -12,21 +12,21 @@ level00@SnowCrash:/$ find ./ -user flag00
 
 On obtient deux résultats (qui sont en réalité les mêmes). On regarde le contenu de `/usr/sbin/john`.
 
-:::success
+```
 level00@SnowCrash:/$ cat /usr/sbin/john
 cdiiddwpgswtgt
-:::
+```
 
 On teste de se connecter avec le contenu du fichier: 
-:::danger
+```
 level00@SnowCrash:/$ su flag00
 Password: cdiiddwpgswtgt
 su: Authentication failure
-:::
+```
 
 Ca ne marche pas. Le mot de passe est peut être chiffré. On va sur dcode.fr comme suggéré dans la vidéo, et on teste le Code César en mode bruteforce. On obtient:
 
-:::info
+```
 +15	nottoohardhere
 +2	abggbbunequrer
 +14	opuuppibseifsf
@@ -52,19 +52,16 @@ Ca ne marche pas. Le mot de passe est peut être chiffré. On va sur dcode.fr co
 +23	fgllggzsjvzwjw
 +20	ijoojjcvmyczmz
 +9	tuzzuungxjnkxk
-:::
+```
 
 On se connecte avec le mot de passe nottoohardhere, et on lance getflag.
 
-:::success
+```
 level00@SnowCrash:/$ su flag00
 Password: nottoohardhere
 Don't forget to launch getflag !
 flag00@SnowCrash:~$ getflag
 Check flag.Here is your token : x24ti5gi3x0ol2eh4esiuxias
-:::
+```
 
-On a notre token:
-:::warning
-x24ti5gi3x0ol2eh4esiuxias
-:::
+On a notre token: `x24ti5gi3x0ol2eh4esiuxias`
