@@ -14,7 +14,7 @@ La structure des entrées dans le fichier /etc/passwd est:
 On récupère donc le hash, et on va utiliser `John the Ripper` pour récupérer le vrai mot de passe.
 On stocke la ligne obtenue dans `/etc/passwd` dans un fichier, et on exécute John dessus.
 ```
-john --show 
+john --show passwd
 flag01:abcdefg:3001:3001::/home/flag/flag01:/bin/bash
 
 1 password hash cracked, 0 left
@@ -23,7 +23,7 @@ flag01:abcdefg:3001:3001::/home/flag/flag01:/bin/bash
 On se connecte avec le mot de passe abcdefg, et on lance getflag.
 
 ```
-level01@SnowCrash:/$ su flag00
+level01@SnowCrash:/$ su flag01
 Password: agcdefg
 Don't forget to launch getflag !
 flag01@SnowCrash:~$ getflag
