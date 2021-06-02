@@ -25,7 +25,7 @@ Unable to read fd %d
 strstr@@GLIBC_2.0
 ```
 
-Si on essaie d'exécuter le programme avec n'importe quel autre fichier, ce dernier est lu sans soucis. On en conclus donc qu'il y a une protection sur le nom du fichier que le programme lis, et que si ce dernier contient "token", il ne sera pas lu. Comme nous n'avons pas le droit de renommer token ou de le copier, on crée un lien symbolique qui sera nommé autrement.
+Si on essaie d'exécuter le programme avec n'importe quel autre fichier, ce dernier est lu sans soucis. On en conclus donc qu'il y a une protection sur le nom du fichier que le programme lis, et que si ce dernier contient "token", il ne sera pas lu. Comme nous n'avons pas le droit de renommer token ou de le copier, on crée un lien symbolique qui sera nommé autrement, afin de tromper le programme.
 
 ```
 level08@SnowCrash:~$ ln -s /home/user/level08/token /tmp/toto
