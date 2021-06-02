@@ -1,5 +1,5 @@
-# Level09 - Interprétation de programme
-Pour résoudre le level09, on a un fichier level09 et un fichier token. Quand on exécute level09, on nous demande de lui donner un fichier à lire.
+# Level08 - Lien symbolique
+Pour résoudre le level08, on a un fichier level08 et un fichier token. Quand on exécute level08, on nous demande de lui donner un fichier à lire.
 
 ```
 level08@SnowCrash:~$ ./level08
@@ -25,7 +25,7 @@ Unable to read fd %d
 strstr@@GLIBC_2.0
 ```
 
-Si on essaie d'exécuter le programme avec n'importe quel autre fichier, ce dernier est lu sans soucis. On en conclus donc qu'il y a une protection sur le nom du fichier que le programme lis, et que si ce dernier contient "token", il ne sera pas lu. Comme nous n'avons pas le droit de renommer token ou de le copier, on crée un lien symbolique qui sera nommé autrement.
+Si on essaie d'exécuter le programme avec n'importe quel autre fichier, ce dernier est lu sans soucis. On en conclus donc qu'il y a une protection sur le nom du fichier que le programme lis, et que si ce dernier contient "token", il ne sera pas lu. Comme nous n'avons pas le droit de renommer token ou de le copier, on crée un lien symbolique qui sera nommé autrement, afin de tromper le programme.
 
 ```
 level08@SnowCrash:~$ ln -s /home/user/level08/token /tmp/toto
