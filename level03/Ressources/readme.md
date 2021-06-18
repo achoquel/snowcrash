@@ -20,6 +20,11 @@ ou
 /bin/bash //Nous ouvre directement un terminal depuis l'utilisateur flag03
 ```
 
+On édite la variable d'environnement `PATH` pour inclure `/tmp` dans les dossiers d'exécutions de programmes, que l'on met en premier:
+```
+flag03@SnowCrash:~$ export PATH=/tmp:$PATH
+```
+
 On `chmod 777 /tmp/echo` et on exécute `level03`. L'appel d'`echo` se fait avec notre version et nos commandes se lancent bien.
 
 On récupère notre flag
