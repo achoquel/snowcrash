@@ -89,7 +89,7 @@ int main ()
 ```
 
 On essaie d'envoyer un fichier simple avec `level10`, on reçoit bien son contenu sur notre serveur.
-Malheureusement, le programme n'utilise pas de setuid, il n'est donc pas exécuté par flag10, et nous n'avons pas les droits sur le fichier token.
+Malheureusement, nous n'avons pas les droits sur token, et une vérification de ces derniers semblent etre effectuée avant l'envoi du fichier.
 
 ```
 -- COTÉ CLIENT --
