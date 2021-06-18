@@ -89,7 +89,7 @@ int main ()
 ```
 
 On essaie d'envoyer un fichier simple avec `level10`, on reçoit bien son contenu sur notre serveur.
-Malheureusement, nous n'avons pas les droits sur token, et une vérification de ces derniers semblent etre effectuée avant l'envoi du fichier.
+Malheureusement, nous n'avons pas les droits sur token, et une vérification de ces derniers semble etre effectuée avant l'envoi du fichier.
 
 ```
 -- COTÉ CLIENT --
