@@ -1,5 +1,5 @@
 # Level14 - RIP getflag
-Pour résoudre le level14, on a rien. Aucun fichier. `getflag` ne nous donne pas le flag. On se doute que pour finir en beauté, on va exploiter getflag. On
+Pour résoudre le level14, on a rien. Aucun fichier. `getflag` ne nous donne pas le flag. On se doute que pour finir en beauté, on va exploiter getflag.
 
 On va utiliser la même méthode que pour le level précédent, c'est à dire modifier l'uid lors de l'exécution du programme pour faire croire à getflag que nous sommes l'utilisateur `flag14`.
 
